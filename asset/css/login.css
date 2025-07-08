@@ -1,0 +1,305 @@
+:root {
+    /* Paleta base */
+    --color-bg-light: linear-gradient(135deg, #eef2f3, #dfe9f3);
+    --color-bg-dark: linear-gradient(135deg, #283344, #262d3d);
+
+    --color-card-light: #ffffff;
+    --color-card-dark: #1e293b;
+
+    --color-text-primary: #4f46e5;
+    --color-text-muted: #6b7280;
+    --color-text-dark-muted: #cbd5e1;
+    --color-text-light: #f8fafc;
+    --color-title: #4f46e5;
+
+    /* azul en modo claro */
+
+    --color-input-bg: #f9fafb;
+    --color-input-bg-dark: #334155;
+    --color-input-border: #d1d5db;
+    --color-input-border-dark: #475569;
+    --color-input-focus-shadow: rgba(79, 70, 229, 0.25);
+
+    --color-btn: #4f46e5;
+    --color-btn-hover: #4338ca;
+    --color-btn-dark: #6366f1;
+    --color-btn-hover-dark: #4f46e5;
+    --color-btn-hover-color: #fff;
+
+    --color-link-hover: #6366f1;
+
+    --color-toggle-bg: #cbd5e1;
+    --color-toggle-checked: #4f46e5;
+
+    --color-theme-toggle: #f3f4f6;
+    --color-theme-toggle-hover: #e5e7eb;
+    --color-theme-toggle-dark: #334155;
+
+    --radius: 12px;
+    --font-main: "Segoe UI", sans-serif;
+
+    --shadow-card-light: 0 20px 30px rgba(0, 0, 0, 0.12);
+    --shadow-card-dark: 0 20px 30px rgba(255, 255, 255, 0.05);
+}
+
+/* ======== BASE ======== */
+body {
+    background: var(--color-bg-light);
+    font-family: var(--font-main);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease;
+}
+
+.login-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+}
+
+
+.login-card {
+    background: var(--color-card-light);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card-light);
+    padding: 3rem 2rem;
+    animation: fadeIn 0.8s ease-in-out;
+    transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+body.dark .login-card {
+    background-color: var(--color-card-dark);
+    color: var(--color-text-light);
+    box-shadow: var(--shadow-card-dark);
+}
+
+.logo-title {
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-text-primary);
+}
+
+.subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-top: -5px;
+}
+
+/* ======= INPUTS ======= */
+.custom-input {
+    border-radius: var(--radius);
+    border: 1px solid var(--color-input-border);
+    background-color: var(--color-input-bg);
+    padding: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+    background: #fff;
+    border-color: var(--color-text-primary);
+    box-shadow: 0 0 0 0.2rem var(--color-input-focus-shadow);
+    transform: scale(1.02);
+}
+
+/* ======= BOTÓN ======= */
+.btn-login {
+    background-color: var(--color-btn);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem;
+    border: none;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: var(--color-btn-hover);
+    color: #fff;
+    transform: scale(1.02);
+}
+
+/* ======= LINK EFECTO ======= */
+.text-link {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    position: relative;
+}
+
+.link-effect::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-link-hover);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.link-effect:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.link-effect:hover {
+    color: var(--color-text-primary);
+}
+
+/* ======= TOGGLE PASSWORD ======= */
+.password-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+
+.toggle {
+    position: relative;
+    width: 42px;
+    height: 22px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-toggle-bg);
+    transition: 0.4s;
+    border-radius: 22px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.toggle input:checked+.slider {
+    background-color: var(--color-toggle-checked);
+}
+
+.toggle input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+.toggle-label {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    user-select: none;
+}
+
+/* ======= TEMA OSCURO ======= */
+body.dark {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+}
+
+body.dark {
+    --color-title: #ffffff;
+    /* blanco en modo oscuro */
+}
+
+body.dark .login-card {
+    background-color: var(--color-card-dark);
+    color: var(--color-text-light);
+}
+
+body.dark .custom-input {
+    background-color: var(--color-input-bg-dark);
+    color: var(--color-text-light);
+    border-color: var(--color-input-border-dark);
+}
+
+body.dark .custom-input:focus {
+    background-color: var(--color-card-dark);
+    border-color: var(--color-btn-dark);
+}
+
+body.dark .btn-login {
+    background-color: var(--color-btn-dark);
+}
+
+body.dark .btn-login:hover {
+    background-color: var(--color-btn-hover-dark);
+}
+
+body.dark .text-link {
+    color: var(--color-text-dark-muted);
+}
+
+.logo-title {
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-title);
+}
+
+body.dark .custom-input::placeholder {
+    color: #f8fafc;
+    /* blanco */
+    opacity: 1;
+    /* asegura visibilidad completa */
+}
+
+/* ======= BOTÓN TEMA ======= */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.btn-toggle-theme {
+    background-color: var(--color-theme-toggle);
+    color: #111827;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-toggle-theme:hover {
+    background-color: var(--color-theme-toggle-hover);
+}
+
+body.dark .btn-toggle-theme {
+    background-color: var(--color-theme-toggle-dark);
+    color: var(--color-text-light);
+}
+
+/* ANIMACIÓN ENTRADA */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
